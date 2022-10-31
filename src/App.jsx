@@ -8,6 +8,7 @@ import  { BrowserRouter, Routes, Route}
  import Users from './Components/Users'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Pagination from './Components/Pagination'
 
 
 
@@ -15,10 +16,8 @@ import axios from 'axios';
 function App() {
  const [users, setUsers] =useState([]);
  const [loading, setLoading] = useState(false);
- const [currentPage ,setCurrentPage] = useState(1)
- const [usersPerPage, setUsersPerPage] = useState(10)
- 
- useEffect(() =>{
+
+   useEffect(() =>{
   const fetchUsers = async () => {
     setLoading(true);
     const res = await axios.get('https://randomuser.me/api/?results=50');
@@ -29,19 +28,16 @@ function App() {
 fetchUsers();
 }, []);
 
-// const indexOfLastUser = currentPage * usersPerPage
-// const  indexOfFirstUser = indexOfLastUser - usersPerPage
-// const  currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
-
 
 return (
+  
     <BrowserRouter>
    <Navbar />
     <Routes>
     <Route path='/' element={<Home />} />
      <Route path='about' element={<About />} />
-     <Route path='users' element={<Users users={users.results} loading={loading}  />} />  
-   <Route path='*' element={<Error />} />
+       <Route path='/users' element={<Pagination /> } />
+        <Route path='*' element={<Error />} />
     </Routes>
   </BrowserRouter>
   
