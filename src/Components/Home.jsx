@@ -7,7 +7,7 @@ const Home = () => {
       <h2>Hey, there</h2>
       <p>Welcome to Monee App</p>
 
-      <Link to='about' className='btn'>More Info</Link>
+      <Link to='about' className='btn-2'>More Info</Link>
     
      </div>
     
